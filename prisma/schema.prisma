@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  FAN
+  COLLABORATOR
+  ARTIST_ADMIN
+  ADMIN
+}
+
+enum WorkStatus {
+  PENDING
+  COMPLETED
+  FAILED
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  FULFILLED
+  CANCELLED
+}
+
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+model User {
+  id              String               @id @default(cuid())
+  email           String               @unique
+  name            String?
+  passwordHash    String
+  role            Role                 @default(FAN)
+  createdAt       DateTime             @default(now())
+  collaborator    CollaboratorProfile?
+  orders          Order[]
+  works           Work[]
+  collabRequests  CollabRequest[]      @relation("requester")
+  receivedRequests CollabRequest[]     @relation("collaborator")
+}
+
+model Universe {
+  id             String     @id @default(cuid())
+  slug           String     @unique
+  name           String
+  manifesto      String
+  paletteNotes   String
+  accentColor    String     @default("#0f0f0f")
+  signerAddress  String
+  createdAt      DateTime   @default(now())
+  releases       Release[]
+  products       Product[]
+  works          Work[]
+  collabRequests CollabRequest[]
+}
+
+model Release {
+  id          String   @id @default(cuid())
+  universe    Universe @relation(fields: [universeId], references: [id])
+  universeId  String
+  title       String
+  date        DateTime
+  coverSvg    String
+  description String
+}
+
+model Product {
+  id          String         @id @default(cuid())
+  universe    Universe       @relation(fields: [universeId], references: [id])
+  universeId  String
+  slug        String         @unique
+  title       String
+  description String
+  priceCents  Int
+  images      String[]
+  status      ProductStatus  @default(ACTIVE)
+  createdAt   DateTime       @default(now())
+  orderItems  OrderItem[]
+}
+
+model Order {
+  id              String       @id @default(cuid())
+  user            User         @relation(fields: [userId], references: [id])
+  userId          String
+  status          OrderStatus  @default(PENDING)
+  totalCents      Int
+  stripeSessionId String?
+  createdAt       DateTime     @default(now())
+  items           OrderItem[]
+}
+
+model OrderItem {
+  id         String  @id @default(cuid())
+  order      Order   @relation(fields: [orderId], references: [id])
+  orderId    String
+  product    Product @relation(fields: [productId], references: [id])
+  productId  String
+  qty        Int     @default(1)
+  priceCents Int
+}
+
+model Work {
+  id              String      @id @default(cuid())
+  user            User        @relation(fields: [userId], references: [id])
+  userId          String
+  universe        Universe    @relation(fields: [universeId], references: [id])
+  universeId      String
+  type            String
+  inputJson       Json
+  outputJson      Json
+  hash            String
+  signature       String
+  chainTxHash     String?
+  chainId         Int?
+  status          WorkStatus  @default(COMPLETED)
+  stripeSessionId String?
+  createdAt       DateTime    @default(now())
+}
+
+model CollaboratorProfile {
+  id                 String   @id @default(cuid())
+  user               User     @relation(fields: [userId], references: [id])
+  userId             String   @unique
+  displayName        String
+  bio                String
+  disciplines        String[]
+  location           String?
+  website            String?
+  portfolioItemsJson Json
+}
+
+model CollabRequest {
+  id                 String    @id @default(cuid())
+  universe           Universe  @relation(fields: [universeId], references: [id])
+  universeId         String
+  collaboratorUser   User      @relation("collaborator", fields: [collaboratorUserId], references: [id])
+  collaboratorUserId String
+  requester          User      @relation("requester", fields: [requesterUserId], references: [id])
+  requesterUserId    String
+  message            String
+  status             String    @default("PENDING")
+  createdAt          DateTime  @default(now())
+}
+
+model Lead {
+  id        String   @id @default(cuid())
+  email     String
+  name      String?
+  note      String?
+  createdAt DateTime @default(now())
+}

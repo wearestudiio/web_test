@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f0f0f;
+  --font-sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Bodoni MT", "Times New Roman", serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    @apply antialiased;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), "Times New Roman", serif;
+    letter-spacing: -0.01em;
+  }
+
+  .ink-shadow {
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.06);
+  }
+
+  .accent-worm {
+    background: linear-gradient(120deg, #0f172a, #a855f7);
+  }
+  .accent-tarns {
+    background: linear-gradient(120deg, #0f172a, #0ea5e9);
+  }
+}
