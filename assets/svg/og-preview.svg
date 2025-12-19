@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#fcfbf8" />
+  <rect x="60" y="60" width="1080" height="510" rx="32" fill="#0b0b0e" />
+  <path d="M80 340c180-160 320-150 460-40 140 110 280 140 480-40" stroke="#7ce53d" stroke-width="14" stroke-linecap="round" />
+  <circle cx="240" cy="260" r="40" fill="#1e7bff" />
+  <circle cx="520" cy="300" r="30" fill="#ff5c8d" />
+  <text x="120" y="160" fill="#fcfbf8" font-family="Bodoni Moda" font-size="80" letter-spacing="-2">studiio / canon</text>
+  <text x="120" y="220" fill="#fcfbf8" font-family="Inter" font-size="32" letter-spacing="2">Human taste, scaled. If it isn't signed, it isn't canon.</text>
+  <text x="120" y="430" fill="#fcfbf8" font-family="IBM Plex Mono" font-size="26">WORM — TARNS — UNIVERSAL CONTRACT OF TASTE</text>
+</svg>

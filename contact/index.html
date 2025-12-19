@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — studiio</title>
+  <meta name="description" content="Join the studiio waitlist: fans, artists, collaborators, investors. Signed canon only.">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <meta property="og:title" content="Contact studiio" />
+  <meta property="og:description" content="Submit to the canon waitlist." />
+  <meta property="og:image" content="../assets/svg/og-preview.svg" />
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+  <header class="site-header">
+    <div class="logo" aria-label="studiio logo" tabindex="0">studiio <span>canon</span></div>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../universes/index.html">Universes</a></li>
+        <li><a href="../how-it-works/index.html">How it works</a></li>
+        <li><a href="../authenticity/index.html">Authenticity</a></li>
+        <li><a href="../collaborate/index.html">Collaborate</a></li>
+        <li><a href="../pricing/index.html">Pricing</a></li>
+        <li><a href="../contact/index.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="section" data-id="CON/001">
+      <p class="tagline">Contact</p>
+      <h1>Enter the canon waitlist.</h1>
+      <p class="lede">Fans, artists, collaborators, investors—tell us who you are. Signed responses only.</p>
+    </section>
+
+    <section class="section" data-id="CON/002">
+      <div class="confetti-area" aria-hidden="true"></div>
+      <form data-form="contact" novalidate>
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+          <label for="interest">I’m a</label>
+          <select id="interest" name="interest">
+            <option value="fan">Fan</option>
+            <option value="artist">Artist</option>
+            <option value="collaborator">Collaborator</option>
+            <option value="investor">Investor</option>
+          </select>
+        </div>
+        <div>
+          <label for="note">Note</label>
+          <textarea id="note" name="note" rows="4" placeholder="What universe are you drawn to?"></textarea>
+        </div>
+        <button class="button primary" type="submit">Send to studiio</button>
+        <p class="microcopy">Mailto fallback: <a href="mailto:hello@studi.io">hello@studi.io</a></p>
+      </form>
+      <div data-form="thanks" style="display:none" class="card">
+        <h3>Signed. You’re on the list.</h3>
+        <p>We saved your submission locally. Expect a human note soon.</p>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="footer-line">
+      <small class="footer-wink">If it isn’t signed, it isn’t canon.</small>
+      <div class="pill-nav">
+        <a href="../about/index.html">About</a>
+        <a href="../pricing/index.html">Pricing</a>
+        <a href="../contact/index.html">Contact</a>
+      </div>
+    </div>
+    <button class="secret-toggle" aria-label="Exit opulence mode">Calm the opulence</button>
+    <button class="button ghost" type="button" data-reduced-toggle>Toggle reduced motion</button>
+  </footer>
+  <script src="../js/main.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/easter-eggs.js"></script>
+  <script src="../js/form.js"></script>
+</body>
+</html>
