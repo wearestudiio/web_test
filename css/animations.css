@@ -1,0 +1,45 @@
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 600ms var(--ease-1), transform 600ms var(--ease-1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.stamp-pulse { animation: float 2.8s ease-in-out infinite; }
+
+.opulence { filter: saturate(1.15); }
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 12px;
+  background: var(--accent-1);
+  top: 0;
+  left: 50%;
+  opacity: 0;
+  transform: translate(-50%, -10px);
+  animation: confetti 1200ms ease forwards;
+}
+
+.confetti-piece:nth-child(2) { left: 40%; background: var(--accent-2); animation-delay: 40ms; }
+.confetti-piece:nth-child(3) { left: 60%; background: var(--accent-3); animation-delay: 80ms; }
+
+@keyframes confetti {
+  0% { opacity: 1; transform: translate(-50%, -10px) rotate(0deg); }
+  60% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, 60px) rotate(60deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .stamp-pulse { animation: none; }
+  .poster { transform: none; }
+  .confetti-piece { display: none; }
+}

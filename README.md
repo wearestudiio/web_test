@@ -1,91 +1,34 @@
-# studiio — signed pop atelier
+# studiio pop-art brochure (static)
 
-Premium, artist-first platform for “on-demand pop packages” with authenticated outputs. Universes (WORM / TARNS) define taste guardrails, fans pay to generate, collaborators list portfolios, and every official work is signed and anchored on a local blockchain registry.
+This is a zero-dependency, multi-page brochure experience for **studiio (studi.io)** built with pure HTML, modern CSS, and vanilla JS.
 
-## Quickstart
+## Run it
+- **Option A:** open `index.html` directly in your browser.
+- **Option B:** serve locally: `python -m http.server 8080` then visit `http://localhost:8080/`.
 
-1) **Install & env**
-```bash
-pnpm install
-cp .env.example .env.local
-```
-Populate `DATABASE_URL` if you aren’t using the provided Postgres container.
+## Accessibility & motion
+- Semantic landmarks, skip link, and visible focus states.
+- Responsive layouts from mobile to desktop.
+- Respects `prefers-reduced-motion`; reveals and parallax pause automatically. A small debug toggle is present in the footer for testing.
 
-2) **Run services (Postgres + local chain)**
-```bash
-docker-compose up -d
-```
+## Design tokens
+- Typography: Inter (UI), Bodoni Moda (editorial headings), IBM Plex Mono (labels).
+- Colors: paper `#fcfbf8`, ink `#0b0b0e`, accents (`#66ff7f`, `#4c7fff`, `#ff5a8a`) plus per-universe overrides.
+- Spacing/Radius/Shadow scales live in `css/tokens.css`.
 
-3) **Database**
-```bash
-pnpm db:generate
-pnpm db:migrate
-pnpm db:seed
-```
+## Delightful moments
+1. Museum placard hover captions on cards and posters.
+2. Signature seal hover pulse in authenticity sections.
+3. Ink-bloom gradients behind certain headings.
+4. Archive mode: click the logo 5× to densify grids + show catalog numbers.
+5. Opulence mode: type `RUNWAY` to add foil glow accents; toggle off by repeating.
+6. Universe motion signatures: WORM uses elastic easing; TARNS uses crisp wipes.
+7. Edition numbers: tiny monospace IDs beside section titles.
+8. Scroll reveal choreography via IntersectionObserver (`js/reveal.js`).
+9. Poster wall parallax on the Universes page (pauses with reduced motion).
+10. Microcopy swap on hover/focus ("Add to canon" → "Add to myth").
+11. Footer wink: hover to reveal a hidden line in monospace.
+12. Accessible confetti on contact submit (disabled when motion is reduced).
 
-4) **Chain deploy (writes address to `.env.local`)**
-```bash
-pnpm chain:deploy
-```
-If you prefer, run the node in another shell with `pnpm chain` (Hardhat/Anvil via docker-compose also exposes `8545`).
-
-5) **App**
-```bash
-pnpm dev
-```
-Visit http://localhost:3000.
-
-### Stripe & OpenAI
-- Leave Stripe keys empty to enable **demo checkout**; orders still save.
-- Add `STRIPE_SECRET_KEY` + `STRIPE_PUBLISHABLE_KEY` + `STRIPE_WEBHOOK_SECRET` for test mode payments.
-- If `OPENAI_API_KEY` is missing, a deterministic local generator creates high-quality outputs.
-
-### Demo accounts (password `demo1234`)
-- Fan: `fan@studi.io`
-- Collaborator: `collab@studi.io`
-- Artist Admin: `artist@studi.io`
-- Platform Admin: `admin@studi.io`
-
-## Scripts
-- `pnpm dev` — run Next.js
-- `pnpm build` — production build
-- `pnpm lint` — lint
-- `pnpm typecheck` — TypeScript check
-- `pnpm test` — Vitest component/unit tests
-- `pnpm db:generate` — Prisma client
-- `pnpm db:migrate` — apply migrations
-- `pnpm db:seed` — seed demo universes, products, collaborators, users
-- `pnpm chain` — Hardhat node (0.0.0.0:8545)
-- `pnpm chain:deploy` — deploy UniverseRegistry + write `.env.local`
-- `pnpm stripe:listen` — optional webhook forwarder to `/api/stripe/webhook`
-
-## MVP features
-- **Public site**: universes, drops, authenticity explainer, verification tool, collaborator program, pricing, about/contact.
-- **App**: authenticated dashboard, generation flow with Stripe checkout or demo path, library of works and orders, collaborator requests, admin view for universes/leads, drop creation for artist/admin roles.
-- **Blockchain authenticity**: work payloads hashed, signed with universe keys, registered on-chain when RPC + private keys are provided (demo signatures otherwise). `/verify` checks DB + chain.
-- **Payments**: Stripe Checkout in test mode; if keys missing, demo checkout still records orders/works.
-
-## File guide
-- `app/` — Next.js routes (public + /app dashboard)
-- `prisma/` — schema + seed data (WORM/TARNS universes, releases, products, collaborators, demo users)
-- `contracts/UniverseRegistry.sol` — on-chain registry
-- `scripts/deploy.ts` — deploy contract + persist address
-- `lib/` — auth, prisma client, generator, blockchain + signing helpers, stripe helpers
-- `tests/` — Vitest coverage for generator + UI components
-- `docker-compose.yml` — Postgres + local chain (anvil)
-
-## Flows to test
-1. **Generate**: `/app/generate` → choose universe/package → (Stripe checkout or demo) → signed result with hash + signature + registry link → view in `/app/library`.
-2. **Drops**: Browse `/drops` → product page → checkout (Stripe or demo) → confirmation + order visible in `/app/library` and `/app/orders`.
-3. **Collaborators**: `/collaborate` public view → sign up as collaborator → browse in `/app/collaborators` → artist/admin can “request collab.”
-4. **Authenticity**: `/authenticity` explains system → `/verify` accepts work ID or hash, checks registry, and renders verified seal.
-
-## Troubleshooting
-- Prisma errors: ensure Postgres is up (`docker-compose ps`) and `DATABASE_URL` matches.
-- Offline / engine download issues: the app falls back to an in-memory Prisma mock so flows still work; on a connected machine run `pnpm db:generate && pnpm db:migrate && pnpm db:seed` to use the real database.
-- Chain issues: restart `pnpm chain` or `docker-compose up chain`, then rerun `pnpm chain:deploy` to refresh the contract address.
-- Stripe webhooks: run `pnpm stripe:listen --forward-to localhost:3000/api/stripe/webhook` with your secret in `.env.local`.
-
-## Accessibility & design notes
-- Editorial serif + clean sans + mono labels, restrained accent colors, focus-visible states, responsive grid, no autoplay media.
-- Micro-interactions: archive-mode logo tap, signed stamp animation, hover placards, smooth drawers/cards.
+## Notes
+All assets are original SVGs located in `assets/svg/`. No external build tools or package managers are required.

@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://studi.io/sitemap.xml
