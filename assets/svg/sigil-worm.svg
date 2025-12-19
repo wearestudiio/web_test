@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" aria-label="WORM sigil">
+  <defs>
+    <linearGradient id="worm" x1="0%" x2="100%" y1="0%" y2="0%">
+      <stop offset="0%" stop-color="#0b0b0e" />
+      <stop offset="100%" stop-color="#8bff3d" />
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="80" r="70" fill="none" stroke="url(#worm)" stroke-width="6" stroke-dasharray="16 8" />
+  <path d="M30 100 Q80 120 130 60" stroke="#8bff3d" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="54" cy="64" r="10" fill="#0b0b0e" stroke="#8bff3d" stroke-width="4" />
+  <circle cx="108" cy="108" r="12" fill="#fcfbf8" stroke="#0b0b0e" stroke-width="4" />
+</svg>

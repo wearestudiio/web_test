@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" aria-label="Icons">
+  <g fill="none" stroke="#0b0b0e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 10 h12 l-6 20 z" />
+    <circle cx="60" cy="20" r="12" />
+    <path d="M90 12 h20 v16 h-20 z" />
+    <path d="M132 10 l12 12 l-12 12 l-12-12 z" />
+    <path d="M170 8 l12 12 l-12 12 l-12-12 z M170 8 v24" />
+  </g>
+</svg>

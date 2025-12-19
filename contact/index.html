@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — studiio</title>
+  <meta name="description" content="Join the studiio waitlist. Fans, artists, collaborators, investors welcome.">
+  <meta property="og:title" content="Contact — studiio">
+  <meta property="og:description" content="Send a note and store a local receipt. If it isn't signed, it isn't canon.">
+  <meta property="og:image" content="../assets/svg/og-preview.svg">
+  <meta property="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/animations.css">
+  <link rel="icon" href="../assets/svg/stamp.svg">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="site-shell navbar">
+      <button class="logo" data-edition="CNT/080" aria-label="studiio logo">studiio</button>
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="../">Home</a></li>
+          <li><a href="../universes/">Universes</a></li>
+          <li><a href="../authenticity/">Authenticity</a></li>
+          <li><a href="../how-it-works/">How it Works</a></li>
+          <li><a href="../collaborate/">Collaborate</a></li>
+          <li><a href="../pricing/">Pricing</a></li>
+          <li><a href="../about/">About</a></li>
+          <li><a href="./">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <div class="site-shell">
+      <section class="hero reveal" aria-labelledby="contact-hero">
+        <div class="hero-meta"><span class="badge accent">Waitlist</span><span class="badge">If it isn't signed, it isn't canon.</span></div>
+        <h1 id="contact-hero">Contact</h1>
+        <p>Drop your intent. We’ll store a local receipt and follow up when the canon opens wider.</p>
+      </section>
+
+      <section class="section-block reveal" aria-labelledby="form">
+        <div class="section-heading"><small>CNT/081</small><h2 id="form">Reach out</h2></div>
+        <form class="form" data-contact-form novalidate>
+          <div>
+            <label for="name">Name</label>
+            <input id="name" name="name" autocomplete="name" required>
+          </div>
+          <div>
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div>
+            <label for="interest">Interest</label>
+            <select id="interest" name="interest">
+              <option>fan</option>
+              <option>artist</option>
+              <option>collaborator</option>
+              <option>investor</option>
+            </select>
+          </div>
+          <div>
+            <label for="note">Note</label>
+            <textarea id="note" name="note" rows="4" placeholder="Tell us your universe."></textarea>
+          </div>
+          <div class="button-row">
+            <button class="btn" type="submit">Send to canon</button>
+            <a class="btn secondary" href="mailto:hello@studi.io">Fallback: mailto</a>
+          </div>
+          <div data-form-message class="helper" aria-live="polite"></div>
+        </form>
+      </section>
+    </div>
+  </main>
+  <footer class="footer" aria-label="Site footer">
+    <div class="site-shell">
+      <div class="button-row" style="justify-content: space-between; align-items: center;">
+        <span>© studiio — we read every note.</span>
+        <button class="debug-toggle" data-toggle-reduced type="button">Toggle reduced-motion preview</button>
+      </div>
+      <p tabindex="0" data-wink="If it isn't signed, it isn't canon." class="microcopy-swap" data-swap="If it isn't signed, it isn't couture.">If it isn't signed, it isn't canon.</p>
+      <div class="wink">(hidden line) — chain of trust intact.</div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+  <script src="../js/reveal.js"></script>
+  <script src="../js/easter-eggs.js"></script>
+  <script src="../js/form.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+/* Minimal reset to keep things civilized */
+*, *::before, *::after { box-sizing: border-box; }
+html { margin: 0; padding: 0; }
+body { margin: 0; }
+h1, h2, h3, h4, h5, h6, p, figure { margin: 0; }
+a { text-decoration: none; color: inherit; }
+ul { padding: 0; margin: 0; list-style: none; }
+img, svg { max-width: 100%; height: auto; display: block; }
+button, input, select, textarea { font: inherit; }
